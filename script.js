@@ -3,7 +3,21 @@ const playerElement = document.getElementById('player');
 const titleDisplay = document.getElementById('isLoad');
 const buttons = document.querySelectorAll('button[data-src]');
 
-const player = new Plyr(playerElement);
+const player = new Plyr(playerElement, {
+  controls: [
+    'play-large', // Nút phát lớn giữa màn hình
+    'rewind',     // ⏪ Tua lùi
+    'play',       // ▶️ Phát / Tạm dừng
+    'fast-forward', // ⏩ Tua tới
+    'progress',   // Thanh tiến trình
+    'current-time', 
+    'duration',
+    'mute',
+    'volume',
+    'settings',
+    'fullscreen'
+  ]
+});
 
 // Hàm phát video HLS
 function playVideo(src, title) {
