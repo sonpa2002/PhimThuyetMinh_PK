@@ -30,9 +30,9 @@ function playVideo(src, title) {
   titleDisplay.textContent = `Đang phát: Phim ${title}`;
 
   // Làm nổi bật nút đang chọn
-  buttons.forEach(btn => btn.classList.remove('FlashActive'));
-  const activeBtn = Array.from(buttons).find(btn => btn.getAttribute('data-title') === title);
-  if (activeBtn) activeBtn.classList.add('FlashActive');
+  // buttons.forEach(btn => btn.classList.remove('FlashActive'));
+  // const activeBtn = Array.from(buttons).find(btn => btn.getAttribute('data-title') === title);
+  // if (activeBtn) activeBtn.classList.add('FlashActive');
 }
 
 // Gán sự kiện click cho từng nút
@@ -42,6 +42,8 @@ buttons.forEach(button => {
     const title = button.getAttribute('data-title');
     
     if (src) {
+      buttons.forEach(btn => btn.classList.remove('FlashActive'));
+      button.classList.add('FlashActive');
       playVideo(src, title);
     } else {
       alert('Video chưa được cập nhật!\nVui lòng liên hệ Tiktok: @odaycothuyetminh để được hỗ trợ');
