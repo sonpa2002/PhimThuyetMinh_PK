@@ -1,15 +1,27 @@
-const playerElement = document.getElementById('player');
 const titleDisplay = document.getElementById('isLoad');
 const buttons = document.querySelectorAll('button[data-src]');
+const videoContainer = document.getElementById('video-container');
 
 let hls;
 let player;
 
-function playVideo(src, title) {
-  if (hls) {
-    hls.destroy();
-  }
-  
+function playVideo(src, title, subSrc) {
+  if (hls) hls.destroy();
+  if (player) player.destroy();
+
+  // Gắn track phụ đề nếu có
+  const subtitleTrack = subSrc
+    ? `<track kind="subtitles" label="Tiếng Việt" srclang="vi" src="${subSrc}">`
+    : '';
+
+  videoContainer.innerHTML = `
+    <video id="player" controls playsinline>
+      ${subtitleTrack}
+    </video>
+  `;
+
+  const playerElement = document.getElementById('player');
+
   hls = new Hls();
   hls.loadSource(src);
   hls.attachMedia(playerElement);
@@ -28,7 +40,7 @@ function playVideo(src, title) {
       controls: [
         'play-large', 'rewind', 'play', 'fast-forward',
         'progress', 'current-time', 'duration',
-        'mute', 'volume', 'settings', 'fullscreen'
+        'mute', 'volume', 'captions', 'settings', 'fullscreen'
       ],
       quality: {
         default: -1,
@@ -46,26 +58,29 @@ function playVideo(src, title) {
         }
       }
     });
-
+    
     player.play();
   });
 
   titleDisplay.textContent = `Đang phát: Phim ${title}`;
 }
 
+
 // Gán sự kiện click
 buttons.forEach(button => {
   button.addEventListener('click', () => {
     const src = button.getAttribute('data-src');
     const title = button.getAttribute('data-title');
+    const subSrc = button.getAttribute('data-sub');
 
     if (src) {
       buttons.forEach(btn => btn.classList.remove('FlashActive'));
       button.classList.add('FlashActive');
-      playVideo(src, title);
+      playVideo(src, title, subSrc);
     } else {
       alert('Video chưa được cập nhật!\nVui lòng liên hệ Tiktok: @odaycothuyetminh để được hỗ trợ');
       button.classList.remove('FlashActive');
     }
   });
 });
+
