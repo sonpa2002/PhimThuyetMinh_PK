@@ -60,14 +60,23 @@ button[data-src].FlashActive {
   font-weight: bold;
   border: 2px solid #00ffc6;
 }
+.plyr__captions{
+  width: 100% !important;
+  position: absolute !important;
+  bottom: 50% !important;
+}
 .plyr__caption {
   text-align: center !important;
   color: #ffffff !important;
   font-family: "Helvetica Neue", tahoma, arial, sans-serif !important;
-  font-size: 25px !important;
-  line-height: 25px !important;
-  background-color: rgba(0, 0, 0, 0.5) !important;
-  text-shadow: none !important;
+  font-size: 100% !important;
+  line-height: 100% !important;
+  background: none !important;
+  text-shadow:
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black !important;
 }
 /* Responsive */
 @media screen and (min-width: 800px) {

@@ -4,6 +4,18 @@ const videoContainer = document.getElementById('video-container');
 
 let hls;
 let player;
+let TileVideo;
+function CaptionsChange(){
+  let videoTagInfo = document.getElementById("player");
+  let rect = videoTagInfo.getBoundingClientRect();
+    
+  let captions = document.querySelector('.plyr__captions');
+  if (captions) {
+    captions.style.setProperty('bottom', `calc(50% - ${(rect.width/TileVideo)/2.38}px)`, 'important');
+    captions.style.setProperty('font-size', `${rect.width/40}px`, 'important');
+    captions.style.setProperty('line-height', `${rect.width/38}px`, 'important');
+  }
+}
 
 function playVideo(src, title, subSrc) {
   if (hls) hls.destroy();
@@ -58,13 +70,18 @@ function playVideo(src, title, subSrc) {
         }
       }
     });
-    
+
+    TileVideo = data.levels[0].width / data.levels[0].height;
+    CaptionsChange();
     player.play();
   });
 
   titleDisplay.textContent = `Đang phát: Phim ${title}`;
 }
-
+window.addEventListener("resize", () => {
+  CaptionsChange();
+    
+});
 
 // Gán sự kiện click
 buttons.forEach(button => {
