@@ -11,9 +11,9 @@ function CaptionsChange(){
     
   let captions = document.querySelector('.plyr__captions');
   if (captions) {
-    captions.style.setProperty('bottom', `calc(50% - ${(rect.width/TileVideo)/2.38}px)`, 'important');
-    captions.style.setProperty('font-size', `${rect.width/40}px`, 'important');
-    captions.style.setProperty('line-height', `${rect.width/38}px`, 'important');
+    captions.style.setProperty('bottom', `calc(50% - ${(rect.width/TileVideo)/2.42}px)`, 'important');
+    captions.style.setProperty('font-size', `${rect.width/36}px`, 'important');
+    captions.style.setProperty('line-height', `${rect.width/32}px`, 'important');
   }
 }
 
@@ -72,6 +72,10 @@ function playVideo(src, title, subSrc) {
     });
 
     TileVideo = data.levels[0].width / data.levels[0].height;
+    let CaptionsButton = document.querySelector('button.plyr__control[data-plyr="captions"]');
+    if (CaptionsButton && CaptionsButton.getAttribute('aria-pressed') === 'false') {
+      CaptionsButton.click();
+    }
     CaptionsChange();
     player.play();
   });

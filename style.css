@@ -67,17 +67,15 @@ button[data-src].FlashActive {
 }
 .plyr__caption {
   text-align: center !important;
-  color: #ffffff !important;
-  font-family: "Helvetica Neue", tahoma, arial, sans-serif !important;
+  color: rgb(255, 255, 255) !important;
   font-size: 100% !important;
   line-height: 100% !important;
-  background: none !important;
-  text-shadow:
-    -1px -1px 0 black,
-     1px -1px 0 black,
-    -1px  1px 0 black,
-     1px  1px 0 black !important;
+  font-family: "Netflix Sans" !important;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0) !important;
+  text-shadow: rgb(0, 0, 0) 0px 0px 5px, rgb(0, 0, 0) 0px 1px 5px, rgb(0, 0, 0) 0px 2px 5px !important;
 }
+
 /* Responsive */
 @media screen and (min-width: 800px) {
     button[data-src]:hover {
