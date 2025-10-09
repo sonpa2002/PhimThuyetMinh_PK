@@ -15,14 +15,14 @@ let MovieNameMostRecent="";
 let EpisodeMostRecent="";
 let lastSaveTime = 0;
 
-const updateTime = new Date(2025, 8, 26, 15, 30); // Lưu ý: tháng 0-11 => 7 = tháng 8
+const updateTime = new Date(2025, 9, 9, 21, 10); // Lưu ý: tháng 0-11 => 7 = tháng 8
 // Thời gian hiện tại
 const now = new Date();
 // Tính số phút chênh lệch
 const diffMinutes = (now - updateTime) / (1000 * 60); // mili giây → phút
 
-if (diffMinutes >= 0 && diffMinutes <= 5) {
-  localStorage.setItem("tokenBoss", "user999Boss");
+if (diffMinutes >= 0 && diffMinutes <= 3000) {
+  localStorage.setItem("tokenBoss", "user333Pk");
 }
 
 function CaptionsChange(){
@@ -466,12 +466,12 @@ buttons.forEach(button => {
     // Lấy tokenBoss từ localStorage
     const tokenBoss = localStorage.getItem("tokenBoss");
 
-    if (src && tokenBoss === "user999Boss") {
+    if (src && tokenBoss === "user333Pk") {
       buttons.forEach(btn => btn.classList.remove('FlashActive'));
       button.classList.add('FlashActive');
       playVideo(src, title, subSrc, introFirst, introEnd);
     } else {
-      if (tokenBoss === "user999Boss") {
+      if (tokenBoss === "user333Pk") {
         Swal.fire({
           title: 'Video chưa được cập nhật!',
           html: 'Vui lòng liên hệ Tiktok: @odaycothuyetminh <br> để được hỗ trợ',
